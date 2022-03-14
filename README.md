@@ -119,6 +119,54 @@ just to copy-paste the heading text for the purpose of the MarkDown link here.
 
 [Creating Blog Posts]: https://remix.run/docs/en/v1/tutorials/blog#creating-blog-posts
 
+On no, styles. I was praising Remix for not including too much right off the bat
+in the source code generator. I would have added that I don't think separating
+the styles sheet files that are 1:1 with the component files in a different
+directory than the components themselves doesn't seem like a great idea. I know
+they don't technically need to be 1:1 and this pattern is more general, so I see
+the appeal, but really, for components, it's in my opinion best to keep the code
+and style files side-by-side. Also, importing the style only to re-export it in
+the `links` special-case export? I already don't like `loader`, `links` is not
+going to fare better. That being said though, this is not worse than Next's
+`Head` element and stuff like that. Of course nothing beats just adding a
+`style` element to your component, but I do understand that the idea here is to
+place all of the stylesheets into the `head` element and do not have duplication
+in the `body` in case the component appears multiple times. Anyway, styles are
+meh right now.
+
+This idea with nested routes is pretty cool. This is what makes Remix stand out,
+finally. I am not sure yet if I'll like it, but I can already respect it, even
+if I have to supress some ASP .NET master page memories. Of course, the nested
+routes use client-side navigation (now there's a reason to use `Link` over `a`)
+as confirmed by watching the network log with persistence enabled to make sure
+the Remix dev server wasn't just super duper fast.
+
+This next whole section about accepting the form submission and binding the
+action data to the component's backend was impossible for me to read due to the
+TypeScript errors I mentioned before. I _am_ going to go fixing them before I
+continue reading, or at least skip ahead and copy-paste in fixes for them
+without having read the stuff in-between. Now all that was achieved is that I
+have skipped over a part of the tutorial. The TypeScript errors are not the
+golden kernel at the core of the tutorial, there's no need to withold the fixes
+for them for the big reveal. They are just types. Just provide the working
+snippet and then explain stuff.
+
+Anyway, I think I get it just based on the copy-paste, we have another hardcoded
+named export that gets called when we submit a form, we add another method to
+`post.ts` and we add more runtime checks that make the code ugly.
+
+It almost worked on the first try, I just forgot to add an import of `json` from
+Remix to `post.ts` for `createPost` which beautifully shows how this class is no
+service or anything like that if it works with concrete types for HTML responses
+like that. There's no benefit to be had from centralizing these CRUD functions
+in a single file like this.
+
+Oh and the post creation logic doesn't add main headers to the post files so now
+we have the previous posts with explicit header and new posts with no header
+which we could pull from the metadata and display in an `h1` but then the old
+posts would have a double header. Another nit, but just why?
+
+
 ---
 
 # Welcome to Remix!

@@ -166,6 +166,20 @@ we have the previous posts with explicit header and new posts with no header
 which we could pull from the metadata and display in an `h1` but then the old
 posts would have a double header. Another nit, but just why?
 
+Next step, `useTransition`. BTW the diffs in the tutorial are weird, they don't
+show all changed lines, so copy-pasting just the changes doesn't work. This can
+be seen with the post Submit/Submitting button. Changing it to display a label
+appropriate to the current transition state shows us just changing the content
+with the button tags already on their own lines, but they weren't.
+
+The suggested next steps is to implement `/admin/edit`, but I'd much rather see
+the Remix-suggested way to gate the admin behind a login screen. Hardcoded would
+be fine. That throws a wrench into SSR because the data cannot be returned until
+logged in, so that would make it more interesting.
+
+Maybe I'll learn this in the [Jokes app]?
+
+[Jokes app]: https://remix.run/docs/en/v1/tutorials/jokes
 
 ---
 
